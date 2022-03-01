@@ -1,0 +1,43 @@
+SOLUTION 1.) 
+=======================================>
+
+from itertools import permutations
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        
+        p = [list(perm) for perm in permutations(nums)]
+        ret = []
+        for i in range(len(p)):
+             if p[i] not in ret:
+                 ret.append(p[i])
+         return ret
+         
+         
+SOLUTION 2.) 
+========================================>
+from itertools import permutations
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+  
+        ret = []
+        
+        def permute(nums, l, r):
+            
+            if l == r:
+                ret.append(nums[:])
+                return 
+            else:
+                for i in range(l, r+1):
+                    nums[l], nums[i] = nums[i], nums[l]
+                    permute(nums, l+1, r)
+                    nums[l], nums[i] = nums[i], nums[l]
+        
+        
+        
+        permute(nums, 0, len(nums)-1)
+        p = []
+
+        for i in range(len(ret)):
+            if ret[i] not in p:
+                p.append(ret[i])
+        return p
