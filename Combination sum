@@ -1,0 +1,20 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        
+        ans = []
+        
+        def combo(index, path):
+            
+            if target == sum(path):
+                ans.append(path[:])
+                
+            if target < sum(path):
+                return 
+            
+            for x in range(index, len(candidates)):
+                path.append(candidates[x])
+                combo(x, path)
+                path.pop()
+                
+        combo(0, [])
+        return ans
