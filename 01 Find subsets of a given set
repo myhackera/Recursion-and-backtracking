@@ -1,0 +1,45 @@
+SOLUTION 1.) 
+=====================================>
+Iterative Version:
+-------------------------------------
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        
+        n = len(nums)
+        power_set = pow(2, n)
+        res = []
+        
+        for binary in range(0, power_set):
+            temp = []
+            for j in range(0, n):
+                
+                if binary&(1<<j):
+                    temp.append(nums[j])
+            res.append(temp)
+        return res
+        
+        
+SOLUTION 2.)
+====================================>
+Backtracking version:
+--------------------------------------
+
+class Solution:
+    def solve(self, i, arr, nums):
+        
+        if i == len(nums):
+            self.ans.append(arr[:])  # arr.copy()
+            return
+            
+        arr.append(nums[i])
+        self.solve(i+1, arr, nums)
+        arr.pop()
+        self.solve(i+1, arr, nums)
+    
+    
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+
+        self.ans = []
+        self.solve(0, [], nums)
+        return self.ans
