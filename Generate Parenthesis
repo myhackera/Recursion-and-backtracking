@@ -1,0 +1,25 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        
+        open = close = n
+        res = []
+        op = ""
+        
+        def solve(open, close, op):
+            
+            if open == 0 and close == 0:
+                res.append(op)
+                return
+            
+            if open != 0:
+                op1 = op
+                op1 += "("
+                solve(open-1, close, op1)
+            if close > open:
+                op2 = op
+                op2 += ")"
+                solve(open, close-1, op2)
+            return
+        
+        solve(open, close, op)
+        return res
