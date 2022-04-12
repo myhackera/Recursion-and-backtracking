@@ -1,0 +1,17 @@
+class Solution:
+	def subsetSums(self, arr, N):
+	    
+	    def subset(arr, i, summ, N):
+	        
+	        if i == N:
+	            ans.append(summ)
+	            return 
+	        
+	        summ += arr[i]
+	        subset(arr, i+1, summ, N)
+	        summ -= arr[i]
+	        subset(arr, i+1, summ, N)
+	    
+		ans = []
+		subset(arr, 0, 0, N)
+		return ans
