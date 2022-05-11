@@ -67,7 +67,7 @@ class Solution:
                     num = int(board[i][j])
                     rows[i].add(num)
                     cols[j].add(num)
-                    box_id = i//3*3 + j//3
+                    box_id = (i//3)*3 + j//3
                     boxes[box_id].add(num)
                   
         
