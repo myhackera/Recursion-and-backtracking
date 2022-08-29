@@ -12,6 +12,12 @@ class Solution:
                 ans.append(subset[::]) 
                 return
             
+            # variation of standard template of backtracking 
+            # subset.append(nums[i])
+            # solve(i+1, subset)
+            # subset.pop()
+            # solve(i+1, subset)
+            
             subset.append(nums[i])
             solve(i+1, subset)
             subset.pop()
@@ -23,3 +29,5 @@ class Solution:
         
         solve(0, [])
         return ans
+        
+        
